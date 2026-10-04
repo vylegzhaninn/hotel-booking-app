@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "auth-service")
 public interface AuthenticationClient {
 
-  @GetMapping("/login")
-  AuthenticationResponse login(@RequestBody AuthenticationRequest request);
+    @GetMapping("/login")
+    AuthenticationResponse login(@RequestBody AuthenticationRequest request);
 
-  @PostMapping("/registration")
-  AuthenticationResponse registration(@RequestBody AuthenticationRequest request);
+    @PostMapping("/registration")
+    AuthenticationResponse registration(@RequestBody AuthenticationRequest request);
 
-  @PostMapping("/logout")
-  void logout(@RequestBody AuthenticationRequest request);
+    @PostMapping("/logout")
+    void logout(@RequestBody AuthenticationRequest request);
 }
