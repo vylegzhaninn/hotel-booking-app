@@ -42,14 +42,4 @@ public class AuthenticationController {
     public AuthenticationResponse registration(@Valid @RequestBody AuthenticationRequest request) {
         return authenticationClient.registration(request);
     }
-
-    @Operation(summary = "Выход из системы", description = "Завершает сессию пользователя")
-    @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Успешный выход"),
-        @ApiResponse(responseCode = "400", description = "Ошибка валидации запроса")
-    })
-    @PostMapping("/logout")
-    public void logout(@Valid @RequestBody AuthenticationRequest request) {
-        authenticationClient.logout(request);
-    }
 }

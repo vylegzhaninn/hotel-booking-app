@@ -1,8 +1,15 @@
 spring:
   application:
     name: auth-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hotelbookingapp_dev
+    username: postgres
+    password: postgres
 server:
   port: 8081
+jwt:
+  secret: ${JWT_SECRET:dev-only-secret-key}
+  expiration-ms: 3600000
 eureka:
   client:
     service-url:

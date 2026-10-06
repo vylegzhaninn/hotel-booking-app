@@ -15,7 +15,4 @@ public interface AuthenticationClient {
 
     @PostMapping("/registration")
     AuthenticationResponse registration(@RequestBody AuthenticationRequest request);
-
-    @PostMapping("/logout")
-    void logout(@RequestBody AuthenticationRequest request);
 }

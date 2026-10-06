@@ -1,0 +1,3 @@
+ALTER TABLE users ALTER COLUMN password TYPE VARCHAR(255);
+
+ALTER TABLE users ADD CONSTRAINT users_name_unique UNIQUE (name);

@@ -13,7 +13,7 @@ public record AuthenticationRequest(
     )
     @NotBlank
     @Size(min = 3, max = 15)
-    String userName,
+    String name,
     @Schema(
         description = "Пароль: заглавная и строчная буквы, цифра и спецсимвол",
         example = "Str0ng@Pass"
