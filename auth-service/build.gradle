@@ -38,6 +38,8 @@ dependencies {
     implementation 'org.jdbi:jdbi3-postgres'
 
     implementation 'org.springframework.boot:spring-boot-starter-flyway'
+    implementation 'org.flywaydb:flyway-core:11.20.3'
+    implementation 'org.flywaydb:flyway-database-postgresql:11.20.3'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

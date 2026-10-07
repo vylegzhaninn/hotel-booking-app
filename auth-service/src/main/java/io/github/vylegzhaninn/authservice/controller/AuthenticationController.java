@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +26,7 @@ public class AuthenticationController {
         @ApiResponse(responseCode = "400", description = "Ошибка валидации запроса"),
         @ApiResponse(responseCode = "401", description = "Неверное имя пользователя или пароль")
     })
-    @GetMapping("/login")
+    @PostMapping("/login")
     public AuthenticationResponse login(@Valid @RequestBody AuthenticationRequest request) {
         return userAuthenticationService.login(request);
     }
