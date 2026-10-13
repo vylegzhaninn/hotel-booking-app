@@ -1,8 +1,8 @@
 package io.github.vylegzhaninn.gateway.controller;
 
-import io.github.vylegzhaninn.gateway.client.AuthenticationClient;
 import io.github.vylegzhaninn.gateway.model.AuthenticationRequest;
 import io.github.vylegzhaninn.gateway.model.AuthenticationResponse;
+import io.github.vylegzhaninn.gateway.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
-    private final AuthenticationClient authenticationClient;
+    private final AuthenticationService authenticationService;
 
     @Operation(summary = "Вход пользователя", description = "Аутентифицирует пользователя и возвращает access-токен")
     @ApiResponses({
@@ -28,7 +28,7 @@ public class AuthenticationController {
     })
     @PostMapping("/login")
     public AuthenticationResponse login(@Valid @RequestBody AuthenticationRequest request) {
-        return authenticationClient.login(request);
+        return authenticationService.login(request);
     }
 
     @Operation(summary = "Регистрация пользователя", description = "Создаёт нового пользователя и возвращает access-токен")
@@ -39,6 +39,6 @@ public class AuthenticationController {
     })
     @PostMapping("/registration")
     public AuthenticationResponse registration(@Valid @RequestBody AuthenticationRequest request) {
-        return authenticationClient.registration(request);
+        return authenticationService.registration(request);
     }
 }

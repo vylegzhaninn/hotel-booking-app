@@ -1,8 +1,9 @@
 package io.github.vylegzhaninn.gateway.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
 import feign.FeignException;
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,6 +25,12 @@ public class AuthenticationExceptionController {
         }
         HttpStatus status = HttpStatus.valueOf(e.status());
         return ProblemDetail.forStatusAndDetail(status, detail(e, status));
+    }
+
+    @ExceptionHandler(CallNotPermittedException.class)
+    public ProblemDetail handleCircuitOpen(CallNotPermittedException e) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.SERVICE_UNAVAILABLE,
+            "auth-service недоступен: circuit breaker открыт, повторите позже");
     }
 
     private String detail(FeignException e, HttpStatus status) {
