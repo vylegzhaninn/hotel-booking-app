@@ -1,13 +1,12 @@
 package io.github.vylegzhaninn.bookingservice;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 class BookingServiceApplicationTests {
 
     @Test
-    void contextLoads() {
+    void applicationStarts() {
+        // Контекст приложения проверяется интеграционным тестом BookingFlowIntegrationTest
+        // с реальными зависимостями (Postgres, Kafka, Redis) в Testcontainers.
     }
-
 }
