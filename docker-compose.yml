@@ -71,7 +71,6 @@ services:
 
   auth-service:
     build: ./auth-service
-    # порт наружу не пробрасываем: все запросы идут через gateway (8080)
     expose:
       - "8081"
     container_name: auth-service
@@ -89,7 +88,6 @@ services:
   booking-service:
     build: ./booking-service
     container_name: booking-service
-    # порт наружу не пробрасываем: все запросы идут через gateway (8080)
     expose:
       - "8082"
     environment:
@@ -111,7 +109,6 @@ services:
   payment-service:
     build: ./payment-service
     container_name: payment-service
-    # порт наружу не пробрасываем: все запросы идут через gateway (8080)
     expose:
       - "8083"
     environment:
@@ -129,7 +126,6 @@ services:
   notification-service:
     build: ./notification-service
     container_name: notification-service
-    # порт наружу не пробрасываем: наружу доступен только gateway (8080)
     expose:
       - "8084"
     environment:
