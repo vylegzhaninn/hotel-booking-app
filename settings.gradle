@@ -1,1 +1,8 @@
 rootProject.name = 'hotel-booking-app'
+
+include 'auth-service'
+include 'booking-service'
+include 'payment-service'
+include 'notification-service'
+include 'gateway'
+include 'eureka-server'

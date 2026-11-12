@@ -17,14 +17,4 @@ public record RoomResponse(
     @Schema(description = "Цена за ночь, руб.", example = "4500.00")
     BigDecimal pricePerNight
 ) {
-
-    public static RoomResponse from(Room room) {
-        return new RoomResponse(
-            room.id(),
-            room.hotelName(),
-            room.roomNumber(),
-            room.category(),
-            room.pricePerNight()
-        );
-    }
 }

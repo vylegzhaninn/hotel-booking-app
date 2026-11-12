@@ -18,14 +18,4 @@ public record PaymentResponse(
     @Schema(description = "Время создания")
     Instant createdAt
 ) {
-
-    public static PaymentResponse from(Payment payment) {
-        return new PaymentResponse(
-            payment.id(),
-            payment.bookingId(),
-            payment.amount(),
-            payment.status(),
-            payment.createdAt()
-        );
-    }
 }

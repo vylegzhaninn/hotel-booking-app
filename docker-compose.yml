@@ -71,6 +71,9 @@ services:
 
   auth-service:
     build: ./auth-service
+    # порт наружу не пробрасываем: все запросы идут через gateway (8080)
+    expose:
+      - "8081"
     container_name: auth-service
     ports:
       - "8081:8081"
@@ -86,8 +89,9 @@ services:
   booking-service:
     build: ./booking-service
     container_name: booking-service
-    ports:
-      - "8082:8082"
+    # порт наружу не пробрасываем: все запросы идут через gateway (8080)
+    expose:
+      - "8082"
     environment:
       BOOKING_DATASOURCE_URL: jdbc:postgresql://db:5432/booking_db
       REDIS_HOST: redis
@@ -107,8 +111,9 @@ services:
   payment-service:
     build: ./payment-service
     container_name: payment-service
-    ports:
-      - "8083:8083"
+    # порт наружу не пробрасываем: все запросы идут через gateway (8080)
+    expose:
+      - "8083"
     environment:
       PAYMENT_DATASOURCE_URL: jdbc:postgresql://db:5432/payment_db
       KAFKA_BOOTSTRAP_SERVERS: kafka:29092
@@ -124,8 +129,9 @@ services:
   notification-service:
     build: ./notification-service
     container_name: notification-service
-    ports:
-      - "8084:8084"
+    # порт наружу не пробрасываем: наружу доступен только gateway (8080)
+    expose:
+      - "8084"
     environment:
       KAFKA_BOOTSTRAP_SERVERS: kafka:29092
     depends_on:
